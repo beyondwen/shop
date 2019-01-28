@@ -5,6 +5,8 @@
     <modules>
         <module>shop-basic</module>
         <module>shop-service</module>
+        <module>shop-entity</module>
+        <module>shop-service-impl</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
