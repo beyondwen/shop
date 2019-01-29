@@ -10,3 +10,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8100/eureka
+
+swagger:
+  base-package: com.wenhao.shop.service.member
+  title: 会员服务接口
+  description: 描述
+  version: 1.1
+

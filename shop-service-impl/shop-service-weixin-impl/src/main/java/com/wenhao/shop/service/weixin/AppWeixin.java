@@ -1,16 +1,16 @@
-package com.wenhao.shop.sevice.member;
+package com.wenhao.shop.service.weixin;
 
+import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
-public class ServiceMemberApplication {
+@EnableSwagger2Doc
+public class AppWeixin {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceMemberApplication.class, args);
+        SpringApplication.run(AppWeixin.class, args);
     }
 }
