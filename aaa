@@ -1,0 +1,32 @@
+###指定java8环境镜像
+FROM java:8
+###复制文件到容器app-springboot
+ADD docker-springboot.jar /app-springboot.jar
+###声明启动端口号
+EXPOSE 8080
+###配置容器启动后执行的命令
+ENTRYPOINT ["java","-jar","/app-springboot.jar"]
+
+
+docker build -t docker-springboot .
+
+docker run -d -p 8080:8080 docker-springboot .
+
+
+docker run \
+    --detach \
+    --publish 8443:443 \
+    --publish 8090:80 \
+    --name gitlab \
+    --restart unless-stopped \
+    -v /mnt/gitlab/etc:/etc/gitlab \
+    -v /mnt/gitlab/log:/var/log/gitlab \
+    -v /mnt/gitlab/data:/var/opt/gitlab \
+    beginor/gitlab-ce:11.0.1-ce.0
+
+
+
+    ssh-keygen -t rsa -C wenhao893989019@hotmail.com
+
+
+    docker run -d -p 8081:8081 --name nexus -v/root/nexus-data:/var/nexus-data --restart=always sonatype/nexus3
