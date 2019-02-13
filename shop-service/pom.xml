@@ -17,8 +17,6 @@
     </modules>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.spring4all/swagger-spring-boot-starter -->
-        <!-- https://mvnrepository.com/artifact/com.spring4all/swagger-spring-boot-starter -->
         <dependency>
             <groupId>com.spring4all</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>

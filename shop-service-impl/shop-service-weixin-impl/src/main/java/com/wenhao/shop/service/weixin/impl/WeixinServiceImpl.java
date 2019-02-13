@@ -9,6 +9,9 @@ public class WeixinServiceImpl implements WeixinService {
 
     @Override
     public AppEnity getApp() {
-        return null;
+        AppEnity appEnity = new AppEnity();
+        appEnity.setAppId("123456");
+        appEnity.setAppName("test");
+        return appEnity;
     }
 }
