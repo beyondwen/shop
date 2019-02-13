@@ -1,4 +1,4 @@
-package com.wenhao.shop.springcloud.eureka;
+package com.wenhao.shop.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
