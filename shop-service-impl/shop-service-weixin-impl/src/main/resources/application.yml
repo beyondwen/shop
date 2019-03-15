@@ -15,3 +15,13 @@ wx:
         aesKey: jGU4Oz68RtpSXDZFEV1GmpQmKC7i03X5G1cRiM8Gxv9 #（接口配置里的EncodingAESKey值）
 server:
   port: 8200
+
+mayikt:
+  weixin:
+    registration:
+      code:
+        message: 您的注册码为:%s
+    default:
+      registration:
+        code:
+          message: 您的消息我们已经收到,回几时回复您的

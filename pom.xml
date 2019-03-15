@@ -7,6 +7,7 @@
         <module>shop-service</module>
         <module>shop-entity</module>
         <module>shop-service-impl</module>
+        <module>shop-common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -82,14 +83,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <!--<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>27.0.1-jre</version>
-        </dependency>-->
-
     </dependencies>
 
     <dependencyManagement>
