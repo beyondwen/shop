@@ -12,7 +12,7 @@
     <artifactId>shop-entity</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>shop-entity-weixin</module>
+        <module>shop-weixin-api-enitys</module>
     </modules>
 
 
