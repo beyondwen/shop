@@ -1,7 +1,6 @@
 package com.wenhao.shop.service.weixin.mp.handler;
 
 import com.wenhao.shop.core.constants.Constants;
-import com.wenhao.shop.core.utils.RedisUtil;
 import com.wenhao.shop.core.utils.RegexUtils;
 import com.wenhao.shop.service.weixin.mp.builder.TextBuilder;
 import me.chanjar.weixin.common.error.WxErrorException;
