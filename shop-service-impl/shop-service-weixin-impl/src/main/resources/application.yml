@@ -1,6 +1,3 @@
-app.id:    app-mayikt-weixin
-apollo.meta: http://11.0.0.122:8080
-
 logging:
   level:
     org.springframework.web: INFO
@@ -25,3 +22,12 @@ mayikt:
       registration:
         code:
           message: 您的消息我们已经收到,回几时回复您的
+spring:
+  redis:
+    host: 11.0.0.122
+    port: 6379
+    pool:
+      max-idle: 100
+      max-active: 1000
+      max-wait: -1
+      min-idle: 1

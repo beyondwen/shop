@@ -1,5 +1,7 @@
 package com.wenhao.shop.service.weixin.mp.handler;
 
+import com.wenhao.shop.core.constants.Constants;
+import com.wenhao.shop.core.utils.RedisUtil;
 import com.wenhao.shop.core.utils.RegexUtils;
 import com.wenhao.shop.service.weixin.mp.builder.TextBuilder;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -8,10 +10,13 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static me.chanjar.weixin.common.api.WxConsts.XmlMsgType;
 
@@ -26,6 +31,20 @@ public class MsgHandler extends AbstractHandler {
 
     @Value("${mayikt.weixin.default.registration.code.message}")
     private String defaultRegistrationCodeMessage;
+
+    /*@Autowired
+    private RedisUtil redisUtil;*/
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    //设置stirng 有过期时间
+    public void setString(String key, String data, Long exTime) {
+        stringRedisTemplate.opsForValue().set(key, data);
+        if (exTime != null) {
+            stringRedisTemplate.expire(key, exTime, TimeUnit.SECONDS);
+        }
+    }
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -59,6 +78,8 @@ public class MsgHandler extends AbstractHandler {
             int registCode = registCode();
             //替换成验证码
             String content = registrationCodeMessage.format(registrationCodeMessage, registCode);
+            //redisUtil.delete("");
+            setString(Constants.WEIXINCODE_KEY + fromContent, registCode + "", Constants.WEIXINCODE_TIMEOUT);
             //返回code
             return new TextBuilder().build(content, wxMessage, weixinService);
         }
