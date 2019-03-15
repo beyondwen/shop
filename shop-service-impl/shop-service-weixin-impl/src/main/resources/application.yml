@@ -1,0 +1,17 @@
+app.id:    app-mayikt-weixin
+apollo.meta: http://11.0.0.122:8080
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.github.binarywang.demo.wx.mp: DEBUG
+    me.chanjar.weixin: DEBUG
+wx:
+  mp:
+    configs:
+      - appId: wx6bc0fc9973f84099 #（一个公众号的appid）
+        secret: 061bbf21e303ffdf1b387f6ab3523892 #（公众号的appsecret）
+        token: mayikt #（接口配置里的Token值）
+        aesKey: jGU4Oz68RtpSXDZFEV1GmpQmKC7i03X5G1cRiM8Gxv9 #（接口配置里的EncodingAESKey值）
+server:
+  port: 8200
