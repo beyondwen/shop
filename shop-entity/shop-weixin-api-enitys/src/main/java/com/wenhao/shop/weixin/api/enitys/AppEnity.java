@@ -9,4 +9,8 @@ public class AppEnity {
 
     private String appId;
 
+    public AppEnity(String appName, String appId) {
+        this.appName = appName;
+        this.appId = appId;
+    }
 }

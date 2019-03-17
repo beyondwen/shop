@@ -1,5 +1,6 @@
 package com.wenhao.shop.service.member.impl;
 
+import com.wenhao.shop.core.base.BaseResponse;
 import com.wenhao.shop.service.member.fegin.WeixinFegin;
 import com.wenhao.shop.sevice.member.service.MemberService;
 import com.wenhao.shop.weixin.api.enitys.AppEnity;
@@ -13,7 +14,7 @@ public class MemberServiceImpl implements MemberService {
     private WeixinFegin weixinFegin;
 
     @Override
-    public AppEnity memberToWeixin() {
+    public BaseResponse<AppEnity> memberToWeixin() {
         return weixinFegin.getApp();
     }
 }

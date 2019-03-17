@@ -1,5 +1,6 @@
 package com.wenhao.shop.sevice.weixin.service;
 
+import com.wenhao.shop.core.base.BaseResponse;
 import com.wenhao.shop.weixin.api.enitys.AppEnity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -9,5 +10,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface WeixinService {
     @ApiOperation(value = "微信app")
     @GetMapping("/getApp")
-    AppEnity getApp();
+    BaseResponse<AppEnity> getApp();
 }

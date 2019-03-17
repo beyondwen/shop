@@ -56,6 +56,12 @@
             <groupId>com.wenhao.shop</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.wenhao.shop</groupId>
+            <artifactId>shop-common-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

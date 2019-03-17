@@ -15,6 +15,7 @@ server:
 
 mayikt:
   weixin:
+    name: '微信测试'
     registration:
       code:
         message: 您的注册码为:%s
@@ -24,7 +25,7 @@ mayikt:
           message: 您的消息我们已经收到,回几时回复您的
 spring:
   redis:
-    host: 11.0.0.122
+    host: 192.168.2.146
     port: 6379
     pool:
       max-idle: 100
