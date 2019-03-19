@@ -10,6 +10,7 @@ import com.wenhao.shop.sevice.member.service.MemberRegisterService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,7 +20,7 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
     private UserMapper userMapper;
 
     @Transactional
-    public BaseResponse<JSONObject> register(UserEntity userEntity, String registCode) {
+    public BaseResponse<JSONObject> register(@RequestBody UserEntity userEntity, String registCode) {
         //参数验证
         String userName = userEntity.getUserName();
         if (StringUtils.isEmpty(userName)) {

@@ -16,7 +16,11 @@
             <groupId>com.wenhao.shop</groupId>
             <artifactId>shop-service-weixin</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-
+        </dependency>
+        <dependency>
+            <groupId>com.wenhao.shop</groupId>
+            <artifactId>shop-service-member</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

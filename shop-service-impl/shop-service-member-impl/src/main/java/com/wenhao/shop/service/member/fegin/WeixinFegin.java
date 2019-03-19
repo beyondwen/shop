@@ -5,6 +5,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient("app-mayikt-weixin")
 public interface WeixinFegin extends WeixinService {
-    /*@GetMapping("/getApp")
-    AppEnity getApp();*/
+
 }

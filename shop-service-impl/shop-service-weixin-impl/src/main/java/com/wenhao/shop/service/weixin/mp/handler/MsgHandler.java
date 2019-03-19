@@ -1,7 +1,10 @@
 package com.wenhao.shop.service.weixin.mp.handler;
 
+import com.wenhao.shop.core.base.BaseResponse;
 import com.wenhao.shop.core.constants.Constants;
 import com.wenhao.shop.core.utils.RegexUtils;
+import com.wenhao.shop.member.api.enity.UserEntity;
+import com.wenhao.shop.service.weixin.feign.MemberServiceFeign;
 import com.wenhao.shop.service.weixin.mp.builder.TextBuilder;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -36,6 +39,9 @@ public class MsgHandler extends AbstractHandler {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private MemberServiceFeign memberServiceFeign;
 
     //设置stirng 有过期时间
     public void setString(String key, String data, Long exTime) {
@@ -73,6 +79,14 @@ public class MsgHandler extends AbstractHandler {
         String fromContent = wxMessage.getContent();
         //校验手机号
         if (RegexUtils.checkMobile(fromContent)) {
+            //根据手机号码调用会员服务接口查询用户信息是否存在
+            BaseResponse<UserEntity> resultExistUserInfo = memberServiceFeign.existMobile(fromContent);
+            if (resultExistUserInfo.getCode().equals(Constants.HTTP_RES_CODE_200)) {
+                return new TextBuilder().build("该手机号码" + fromContent + "已经存在", wxMessage, weixinService);
+            }
+            if (!resultExistUserInfo.getCode().equals(Constants.HTTP_RES_CODE_EXISTMOBILE_202)) {
+                return new TextBuilder().build(resultExistUserInfo.getMsg(), wxMessage, weixinService);
+            }
             //生成code
             int registCode = registCode();
             //替换成验证码

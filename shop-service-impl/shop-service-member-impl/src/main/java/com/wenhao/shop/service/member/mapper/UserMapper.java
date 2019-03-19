@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
 
-    @Insert("INSERT INTO `meite_user`(MOBIL,EMAIL,PASSWORD,USER_NAME,SEX,AGE,CREATE_TIME,UPDATE_TIME,IS_AVALIBLE,PIC_IMAGE,QQ_OPENID,WX_OPENID) VALUES (#{mobile}, #{email}, #{password}, #{userName}, null, null, null,null, '1', null, null, null);")
+    @Insert("INSERT INTO `meite_user`(MOBILE,EMAIL,PASSWORD,USER_NAME,SEX,AGE,CREATE_TIME,UPDATE_TIME,IS_AVALIBLE,PIC_IMAGE,QQ_OPENID,WX_OPENID) VALUES (#{mobile}, #{email}, #{password}, #{userName}, null, null, null,null, '1', null, null, null);")
     int register(UserEntity userEntity);
 
     @Select("SELECT * FROM meite_user WHERE MOBILE=#{mobile};")

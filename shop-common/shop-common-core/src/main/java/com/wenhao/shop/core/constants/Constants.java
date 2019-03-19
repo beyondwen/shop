@@ -37,4 +37,7 @@ public interface Constants {
 
     //微信注册码有效时间
     Long WEIXINCODE_TIMEOUT = 1800L;
+
+    //手机号码已经存在
+    int HTTP_RES_CODE_EXISTMOBILE_202 = 202;
 }
