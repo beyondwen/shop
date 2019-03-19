@@ -16,6 +16,7 @@
             <groupId>com.wenhao.shop</groupId>
             <artifactId>shop-service-weixin</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+
         </dependency>
 
         <dependency>
@@ -27,6 +28,10 @@
                     <artifactId>xstream</artifactId>
                     <groupId>com.thoughtworks.xstream</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -36,6 +41,10 @@
                 <exclusion>
                     <artifactId>xstream</artifactId>
                     <groupId>com.thoughtworks.xstream</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
         </dependency>

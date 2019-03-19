@@ -21,10 +21,15 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>com.google.guava</groupId>
+                    <artifactId>commons-io</artifactId>
+                    <groupId>commons-io</groupId>
+                </exclusion>
+                <exclusion>
                     <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
+
         </dependency>
         <!-- 阿波罗整合spring boot -->
         <dependency>
@@ -33,8 +38,8 @@
             <version>1.2.0</version>
             <exclusions>
                 <exclusion>
-                    <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -45,8 +50,8 @@
             <version>1.2.0</version>
             <exclusions>
                 <exclusion>
-                    <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -62,6 +67,19 @@
             <artifactId>shop-common-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- mybatis相关依赖 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- mysql 依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

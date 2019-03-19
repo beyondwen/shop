@@ -3,7 +3,7 @@ package com.wenhao.shop.service.weixin.impl;
 import com.wenhao.shop.core.base.BaseApiService;
 import com.wenhao.shop.core.base.BaseResponse;
 import com.wenhao.shop.sevice.weixin.service.WeixinService;
-import com.wenhao.shop.weixin.api.enitys.AppEnity;
+import com.wenhao.shop.weixin.api.enity.AppEnity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -73,15 +73,31 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <exclusions>
                 <exclusion>
-                    <groupId>com.google.guava</groupId>
+                    <artifactId>eureka-client</artifactId>
+                    <groupId>com.netflix.eureka</groupId>
+                </exclusion>
+                <exclusion>
                     <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
+
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                    <groupId>org.springframework.cloud</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
+
         </dependency>
 
         <dependency>

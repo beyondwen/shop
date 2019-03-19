@@ -1,4 +1,4 @@
-package com.wenhao.shop.weixin.api.enitys;
+package com.wenhao.shop.weixin.api.enity;
 
 import lombok.Data;
 

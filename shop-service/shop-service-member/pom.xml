@@ -14,8 +14,14 @@
     <dependencies>
         <dependency>
             <groupId>com.wenhao.shop</groupId>
-            <artifactId>shop-weixin-api-enitys</artifactId>
+            <artifactId>shop-weixin-api-enity</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenhao.shop</groupId>
+            <artifactId>shop-member-api-enity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

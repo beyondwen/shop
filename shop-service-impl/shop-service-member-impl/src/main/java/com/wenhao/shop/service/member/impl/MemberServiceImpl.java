@@ -3,7 +3,7 @@ package com.wenhao.shop.service.member.impl;
 import com.wenhao.shop.core.base.BaseResponse;
 import com.wenhao.shop.service.member.fegin.WeixinFegin;
 import com.wenhao.shop.sevice.member.service.MemberService;
-import com.wenhao.shop.weixin.api.enitys.AppEnity;
+import com.wenhao.shop.weixin.api.enity.AppEnity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

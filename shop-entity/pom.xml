@@ -12,8 +12,17 @@
     <artifactId>shop-entity</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>shop-weixin-api-enitys</module>
+        <module>shop-weixin-api-enity</module>
+        <module>shop-member-api-enity</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>1.8.0.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
