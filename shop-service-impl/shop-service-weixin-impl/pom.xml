@@ -57,5 +57,10 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <version>1.4.10</version>
         </dependency>
+        <dependency>
+            <groupId>com.wenhao.shop</groupId>
+            <artifactId>shop-common-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

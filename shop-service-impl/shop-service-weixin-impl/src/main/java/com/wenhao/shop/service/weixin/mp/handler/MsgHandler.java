@@ -1,9 +1,9 @@
 package com.wenhao.shop.service.weixin.mp.handler;
 
-import com.wenhao.shop.core.base.BaseResponse;
-import com.wenhao.shop.core.constants.Constants;
-import com.wenhao.shop.core.utils.RegexUtils;
-import com.wenhao.shop.member.api.enity.UserEntity;
+import com.wenhao.member.output.dto.UserOutDTO;
+import com.wenhao.base.BaseResponse;
+import com.wenhao.constants.Constants;
+import com.wenhao.core.utils.RegexUtils;
 import com.wenhao.shop.service.weixin.feign.MemberServiceFeign;
 import com.wenhao.shop.service.weixin.mp.builder.TextBuilder;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -80,7 +80,7 @@ public class MsgHandler extends AbstractHandler {
         //校验手机号
         if (RegexUtils.checkMobile(fromContent)) {
             //根据手机号码调用会员服务接口查询用户信息是否存在
-            BaseResponse<UserEntity> resultExistUserInfo = memberServiceFeign.existMobile(fromContent);
+            BaseResponse<UserOutDTO> resultExistUserInfo = memberServiceFeign.existMobile(fromContent);
             if (resultExistUserInfo.getCode().equals(Constants.HTTP_RES_CODE_200)) {
                 return new TextBuilder().build("该手机号码" + fromContent + "已经存在", wxMessage, weixinService);
             }

@@ -55,19 +55,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <dependency>
-            <artifactId>shop-common</artifactId>
-            <groupId>com.wenhao.shop</groupId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.wenhao.shop</groupId>
-            <artifactId>shop-common-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
         <!-- mybatis相关依赖 -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

@@ -1,7 +1,7 @@
 package com.wenhao.shop.sevice.weixin.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wenhao.shop.core.base.BaseResponse;
+import com.wenhao.base.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

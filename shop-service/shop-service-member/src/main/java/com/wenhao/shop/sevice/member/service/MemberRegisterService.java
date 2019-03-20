@@ -1,8 +1,8 @@
 package com.wenhao.shop.sevice.member.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wenhao.shop.core.base.BaseResponse;
-import com.wenhao.shop.member.api.enity.UserEntity;
+import com.wenhao.member.input.dto.UserInpDTO;
+import com.wenhao.base.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +14,12 @@ public interface MemberRegisterService {
     /**
      * 用户注册接口
      *
-     * @param userEntity
+     * @param userInpDTO
      * @return
      */
     @PostMapping("/register")
     @ApiOperation(value = "会员用户注册信息接口")
-    BaseResponse<JSONObject> register(@RequestBody UserEntity userEntity,
+    BaseResponse<JSONObject> register(@RequestBody UserInpDTO userInpDTO,
                                       @RequestParam("registCode") String registCode);
 
 }

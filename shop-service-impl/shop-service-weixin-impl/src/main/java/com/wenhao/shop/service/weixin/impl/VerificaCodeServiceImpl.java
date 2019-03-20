@@ -1,9 +1,9 @@
 package com.wenhao.shop.service.weixin.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wenhao.shop.core.base.BaseApiService;
-import com.wenhao.shop.core.base.BaseResponse;
-import com.wenhao.shop.core.constants.Constants;
+import com.wenhao.base.BaseApiService;
+import com.wenhao.base.BaseResponse;
+import com.wenhao.constants.Constants;
 import com.wenhao.shop.sevice.weixin.service.VerificaCodeService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
