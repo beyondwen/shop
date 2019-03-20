@@ -1,16 +1,9 @@
 package com.wenhao.core.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.DataType;
-import org.springframework.data.redis.core.Cursor;
-import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,8 +38,8 @@ public class RedisUtil {
     }
 
     //删除key
-    public void delete(String key) {
-        stringRedisTemplate.delete(key);
+    public Boolean delete(String key) {
+        return stringRedisTemplate.delete(key);
     }
 
 }

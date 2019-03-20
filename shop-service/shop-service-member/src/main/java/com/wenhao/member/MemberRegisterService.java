@@ -1,4 +1,4 @@
-package com.wenhao.shop.sevice.member.service;
+package com.wenhao.member;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wenhao.member.input.dto.UserInpDTO;

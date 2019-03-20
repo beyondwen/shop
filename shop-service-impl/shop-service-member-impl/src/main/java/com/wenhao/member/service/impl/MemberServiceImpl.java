@@ -1,4 +1,4 @@
-package com.wenhao.member.impl;
+package com.wenhao.member.service.impl;
 
 import com.wenhao.base.BaseApiService;
 import com.wenhao.base.BaseResponse;
@@ -7,7 +7,7 @@ import com.wenhao.core.bean.MeiteBeanUtils;
 import com.wenhao.member.fegin.WeixinFegin;
 import com.wenhao.member.mapper.UserMapper;
 import com.wenhao.member.output.dto.UserOutDTO;
-import com.wenhao.shop.sevice.member.service.MemberService;
+import com.wenhao.member.MemberService;
 import com.wenhao.weixin.input.dto.AppInpDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

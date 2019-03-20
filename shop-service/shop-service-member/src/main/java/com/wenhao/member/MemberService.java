@@ -1,4 +1,4 @@
-package com.wenhao.shop.sevice.member.service;
+package com.wenhao.member;
 
 import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.base.BaseResponse;

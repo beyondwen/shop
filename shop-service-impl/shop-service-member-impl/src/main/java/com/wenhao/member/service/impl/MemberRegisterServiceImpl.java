@@ -1,8 +1,7 @@
-package com.wenhao.member.impl;
+package com.wenhao.member.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wenhao.core.bean.MeiteBeanUtils;
-import com.wenhao.core.error.GlobalExceptionHandler;
 import com.wenhao.member.input.dto.UserInpDTO;
 import com.wenhao.base.BaseApiService;
 import com.wenhao.base.BaseResponse;
@@ -11,9 +10,8 @@ import com.wenhao.core.utils.MD5Util;
 import com.wenhao.member.enity.UserDo;
 import com.wenhao.member.fegin.VerificaCodeServiceFegin;
 import com.wenhao.member.mapper.UserMapper;
-import com.wenhao.shop.sevice.member.service.MemberRegisterService;
+import com.wenhao.member.MemberRegisterService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;

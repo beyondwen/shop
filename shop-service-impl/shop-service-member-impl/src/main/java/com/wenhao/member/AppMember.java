@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication(scanBasePackages = {"com.wenhao.member.*","com.wenhao.core.error"})
+@SpringBootApplication(scanBasePackages = {"com.wenhao","com.wenhao.core.error"})
 @EnableEurekaClient
 @EnableFeignClients
 @EnableSwagger2Doc

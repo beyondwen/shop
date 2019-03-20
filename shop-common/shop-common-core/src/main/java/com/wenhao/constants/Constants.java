@@ -26,7 +26,6 @@ public interface Constants {
     String TOKEN_MEMBER = "TOKEN_MEMBER";
 
     //用户有效期
-    Long TOKEN_MEMBER_TIME = (long) (60 * 60 * 24 * 90);
     int COOKIE_TOKEN_MEMBER_TIME = (60 * 60 * 24 * 90);
 
     //cookie 会员 token
@@ -40,4 +39,15 @@ public interface Constants {
 
     //手机号码已经存在
     int HTTP_RES_CODE_EXISTMOBILE_202 = 202;
+
+    //token
+    String MEMBER_TOKEN_KEYPREFIX = "mt.mb.login";
+
+    //登录类型
+    String MEMBER_LOGIN_TYPE_ANDROID = "Android";
+    String MEMBER_LOGIN_TYPE_IOS = "IOS";
+    String MEMBER_LOGIN_TYPE_PC = "PC";
+
+    Long TOKEN_MEMBER_TIME = (long) (60 * 60 * 24 * 90);
+    Long MEMBER_LOGIN_TOKEN_TIME = (long) (60 * 60 * 24 * 90);
 }

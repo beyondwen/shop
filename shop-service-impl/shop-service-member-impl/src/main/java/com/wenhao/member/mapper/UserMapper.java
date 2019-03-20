@@ -1,7 +1,7 @@
 package com.wenhao.member.mapper;
 
-import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.member.enity.UserDo;
+import com.wenhao.member.output.dto.UserOutDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +15,8 @@ public interface UserMapper {
 
     @Select("SELECT * FROM meite_user WHERE MOBILE=#{mobile};")
     UserOutDTO existMobile(@Param("mobile") String mobile);
+
+    @Select("SELECT USER_ID as userId,MOBILE as mobile,EMAIL as email,PASSWORD as password,USER_NAME as userName FROM meite_user WHERE MOBILE=#{0} And PASSWORD=#{1};")
+    UserDo login(@Param("mobile") String mobile, @Param("password") String password);
 
 }
