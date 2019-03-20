@@ -3,8 +3,10 @@ package com.wenhao.shop.service.member.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.wenhao.shop.core.base.BaseApiService;
 import com.wenhao.shop.core.base.BaseResponse;
+import com.wenhao.shop.core.constants.Constants;
 import com.wenhao.shop.core.utils.MD5Util;
 import com.wenhao.shop.member.api.enity.UserEntity;
+import com.wenhao.shop.service.member.fegin.VerificaCodeServiceFegin;
 import com.wenhao.shop.service.member.mapper.UserMapper;
 import com.wenhao.shop.sevice.member.service.MemberRegisterService;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +20,9 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private VerificaCodeServiceFegin verificaCodeServiceFegin;
 
     @Transactional
     public BaseResponse<JSONObject> register(@RequestBody UserEntity userEntity, String registCode) {
@@ -33,6 +38,11 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
         String password = userEntity.getPassword();
         if (StringUtils.isEmpty(password)) {
             return setResultError("密码不能为空");
+        }
+        //验证注册码是否正确
+        BaseResponse<JSONObject> verificaWeixinCode = verificaCodeServiceFegin.verificaWeixinCode(mobile, registCode);
+        if (!verificaWeixinCode.getCode().equals(Constants.HTTP_RES_CODE_200)) {
+            return setResultError(verificaWeixinCode.getMsg());
         }
         //对用户密码加密
         String newPassword = MD5Util.MD5(password);

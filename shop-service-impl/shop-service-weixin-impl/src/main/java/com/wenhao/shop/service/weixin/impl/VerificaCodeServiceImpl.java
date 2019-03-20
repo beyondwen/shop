@@ -33,7 +33,7 @@ public class VerificaCodeServiceImpl extends BaseApiService<JSONObject> implemen
             return setResultError("手机号码不能为空");
         }
         if (StringUtils.isEmpty(weixinCode)) {
-            return setResultError("微信号码不能为空");
+            return setResultError("微信验证码不能为空");
         }
         String weixinCodeKey = Constants.WEIXINCODE_KEY + phone;
         String redisCode = getString(weixinCodeKey);
