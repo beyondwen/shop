@@ -1,6 +1,7 @@
 package com.wenhao.member.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wenhao.core.bean.MeiteBeanUtils;
 import com.wenhao.core.error.GlobalExceptionHandler;
 import com.wenhao.member.input.dto.UserInpDTO;
 import com.wenhao.base.BaseApiService;
@@ -43,16 +44,17 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
             return setResultError("密码不能为空");
         }
         //验证注册码是否正确
-        /*BaseResponse<JSONObject> verificaWeixinCode = verificaCodeServiceFegin.verificaWeixinCode(mobile, registCode);
+        BaseResponse<JSONObject> verificaWeixinCode = verificaCodeServiceFegin.verificaWeixinCode(mobile, registCode);
         if (!verificaWeixinCode.getCode().equals(Constants.HTTP_RES_CODE_200)) {
             return setResultError(verificaWeixinCode.getMsg());
-        }*/
+        }
         //对用户密码加密
         String newPassword = MD5Util.MD5(password);
         userInpDTO.setPassword(newPassword);
         //调用数据库插入数据 将请求的dto转成do
-        UserDo userDo = new UserDo();
-        BeanUtils.copyProperties(userInpDTO, userDo);
+        /*UserDo userDo = new UserDo();
+        BeanUtils.copyProperties(userInpDTO, userDo);*/
+        UserDo userDo = MeiteBeanUtils.dtoToDo(userInpDTO, UserDo.class);
         //更新数据库
         return userMapper.register(userDo) > 0 ? setResultSuccess("注册成功") : setResultError("注册失败");
     }

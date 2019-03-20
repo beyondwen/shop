@@ -1,11 +1,12 @@
 package com.wenhao.member.impl;
 
-import com.wenhao.member.fegin.WeixinFegin;
-import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.base.BaseApiService;
 import com.wenhao.base.BaseResponse;
 import com.wenhao.constants.Constants;
+import com.wenhao.core.bean.MeiteBeanUtils;
+import com.wenhao.member.fegin.WeixinFegin;
 import com.wenhao.member.mapper.UserMapper;
+import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.shop.sevice.member.service.MemberService;
 import com.wenhao.weixin.input.dto.AppInpDTO;
 import org.apache.commons.lang3.StringUtils;
@@ -37,9 +38,7 @@ public class MemberServiceImpl extends BaseApiService<UserOutDTO> implements Mem
         if (userEntity == null) {
             return setResultError(Constants.HTTP_RES_CODE_EXISTMOBILE_202, "用户不存在");
         }
-        // 注意需要将敏感数据进行脱敏
-        userEntity.setPassword(null);
-        return setResultSuccess(userEntity);
+        return setResultSuccess(MeiteBeanUtils.dtoToDo(userEntity, UserOutDTO.class));
     }
 
 }
