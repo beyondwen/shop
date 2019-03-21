@@ -5,6 +5,7 @@ import com.wenhao.base.BaseApiService;
 import com.wenhao.base.BaseResponse;
 import com.wenhao.constants.Constants;
 import com.wenhao.core.token.GenerateToken;
+import com.wenhao.core.transaction.RedisDatasourceTransaction;
 import com.wenhao.core.utils.MD5Util;
 import com.wenhao.member.MemberLoginService;
 import com.wenhao.member.enity.UserDo;
@@ -14,6 +15,7 @@ import com.wenhao.member.mapper.UserMapper;
 import com.wenhao.member.mapper.UserTokenMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +30,9 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
 
     @Autowired
     private UserTokenMapper userTokenMapper;
+
+    @Autowired
+    private RedisDatasourceTransaction redisDatasourceTransaction;
 
     public BaseResponse<JSONObject> login(@RequestBody UserLoginInpDto userLoginInpDto) {
         //验证手机号和密码
@@ -59,27 +64,45 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
         if (userDo == null) {
             return setResultError("用户名或者密码错误");
         }
-        //获取userid
-        Long userId = userDo.getUserId();
-        //根据用户id和登录类型查询是否登录过
-        UserTokenDo userTokenDo = userTokenMapper.selectByUserIdAndLoginType(userId, logintype);
-        if (userTokenDo != null) {
-            String token = userTokenDo.getToken();
-            Boolean isRemoveToken = generateToken.removeToken(token);
-            if (isRemoveToken) {
-                userTokenMapper.updateTokenAvaliable(token);
+        TransactionStatus transactionStatus = null;
+        try {
+            //获取userid
+            Long userId = userDo.getUserId();
+            //根据用户id和登录类型查询是否登录过
+            UserTokenDo userTokenDo = userTokenMapper.selectByUserIdAndLoginType(userId, logintype);
+            transactionStatus = redisDatasourceTransaction.begin();
+            if (userTokenDo != null) {
+                String token = userTokenDo.getToken();
+                generateToken.removeToken(token);
+                int updateTokenAvaliable = userTokenMapper.updateTokenAvaliable(token);
+                if (!toDaoResult(updateTokenAvaliable)) {
+                    redisDatasourceTransaction.rollback(transactionStatus);
+                    return setResultError("系统错误");
+                }
             }
+            UserTokenDo userToken = new UserTokenDo();
+            userToken.setUserId(userId);
+            userToken.setLoginType(logintype);
+            String keyPrefix = Constants.MEMBER_TOKEN_KEYPREFIX + logintype;
+            String token = generateToken.createToken(keyPrefix, userId + "");
+            userToken.setToken(token);
+            userToken.setDeviceInfo(deviceInfo);
+            int insertUserToken = userTokenMapper.insertUserToken(userToken);
+            if (!toDaoResult(insertUserToken)) {
+                redisDatasourceTransaction.rollback(transactionStatus);
+                return setResultError("系统错误");
+            }
+            JSONObject data = new JSONObject();
+            data.put("token", token);
+            redisDatasourceTransaction.commit(transactionStatus);
+            return setResultSuccess(data);
+        } catch (Exception e) {
+            try {
+                redisDatasourceTransaction.rollback(transactionStatus);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return setResultError("系统错误");
         }
-        String keyPrefix = Constants.MEMBER_TOKEN_KEYPREFIX + logintype;
-        String token = generateToken.createToken(keyPrefix, userId + "");
-        UserTokenDo userToken = new UserTokenDo();
-        userToken.setUserId(userId);
-        userToken.setLoginType(logintype);
-        userToken.setToken(token);
-        userToken.setDeviceInfo(deviceInfo);
-        userTokenMapper.insertUserToken(userToken);
-        JSONObject data = new JSONObject();
-        data.put("token", token);
-        return setResultSuccess(data);
     }
 }

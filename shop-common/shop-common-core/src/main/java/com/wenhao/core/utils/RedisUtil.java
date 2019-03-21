@@ -42,4 +42,30 @@ public class RedisUtil {
         return stringRedisTemplate.delete(key);
     }
 
+    /**
+     * 开启事务
+     */
+    public void begin() {
+        //开启redis 事务权限
+        stringRedisTemplate.setEnableTransactionSupport(true);
+        //开启事务
+        stringRedisTemplate.multi();
+    }
+
+    /**
+     * 提交事务
+     */
+    public void exec() {
+        //提交事务
+        stringRedisTemplate.exec();
+    }
+
+    /**
+     * 回滚事务
+     */
+    public void discard() {
+        //回滚事务
+        stringRedisTemplate.discard();
+    }
+
 }

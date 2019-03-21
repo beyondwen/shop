@@ -37,4 +37,7 @@ public class BaseApiService<T> {
         return new BaseResponse<T>(code, msg, data);
     }
 
+    public Boolean toDaoResult(int result) {
+        return result > 0 ? true : false;
+    }
 }
