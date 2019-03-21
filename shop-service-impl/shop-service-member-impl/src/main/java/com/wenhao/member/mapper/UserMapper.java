@@ -19,4 +19,7 @@ public interface UserMapper {
     @Select("SELECT USER_ID as userId,MOBILE as mobile,EMAIL as email,PASSWORD as password,USER_NAME as userName FROM meite_user WHERE MOBILE=#{0} And PASSWORD=#{1};")
     UserDo login(@Param("mobile") String mobile, @Param("password") String password);
 
+    @Select("SELECT USER_ID as userId,MOBILE as mobile,EMAIL as email,PASSWORD as password,USER_NAME as userName FROM meite_user WHERE USER_ID=#{0};")
+    UserDo findByUserId(@Param("userId") Long userId);
+
 }

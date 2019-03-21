@@ -56,5 +56,18 @@ public class GenerateToken {
 
     }
 
+    /**
+     * getToken
+     *
+     * @param redisValue redis存放的值
+     * @return 返回token
+     */
+    public String getToken(String redisValue) {
+        if (StringUtils.isEmpty(redisValue)) {
+            return null;
+        }
+        return redisUtil.getString(redisValue);
+    }
+
 }
 
