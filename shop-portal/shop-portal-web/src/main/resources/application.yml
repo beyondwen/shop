@@ -8,8 +8,7 @@ spring:
     expose-session-attributes: true
     request-context-attribute: request
     suffix: .ftl
-    template-loader-path:
-      -classpath:/templates
+    template-loader-path: classpath:/templates
   application:
     name: app-mayikt-portal-web
 server:
