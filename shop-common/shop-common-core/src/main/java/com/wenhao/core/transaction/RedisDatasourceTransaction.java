@@ -54,6 +54,6 @@ public class RedisDatasourceTransaction {
             throw new Exception("transactionStatus is null");
         }
         dataSourceTransactionManager.rollback(transactionStatus);
-        redisUtil.discard();
+        //redisUtil.discard();
     }
 }

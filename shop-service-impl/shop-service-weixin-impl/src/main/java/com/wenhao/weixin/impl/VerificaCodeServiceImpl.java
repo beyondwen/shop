@@ -17,19 +17,19 @@ public class VerificaCodeServiceImpl extends BaseApiService<JSONObject> implemen
     private RedisUtil redisUtil;
 
     @Override
-    public BaseResponse<JSONObject> verificaWeixinCode(String phone, String weixinCode) {
-        if (StringUtils.isEmpty(phone)) {
+    public BaseResponse<JSONObject> verificaWeixinCode(String mobile, String registCode) {
+        if (StringUtils.isEmpty(mobile)) {
             return setResultError("手机号码不能为空");
         }
-        if (StringUtils.isEmpty(weixinCode)) {
+        if (StringUtils.isEmpty(registCode)) {
             return setResultError("微信验证码不能为空");
         }
-        String weixinCodeKey = Constants.WEIXINCODE_KEY + phone;
+        String weixinCodeKey = Constants.WEIXINCODE_KEY + mobile;
         String redisCode = redisUtil.getString(weixinCodeKey);
         if (StringUtils.isEmpty(redisCode)) {
             return setResultError("注册码可能已经过期");
         }
-        if (!redisCode.equals(weixinCode)) {
+        if (!redisCode.equals(registCode)) {
             return setResultError("注册码不正确");
         }
         redisUtil.delete(weixinCodeKey);

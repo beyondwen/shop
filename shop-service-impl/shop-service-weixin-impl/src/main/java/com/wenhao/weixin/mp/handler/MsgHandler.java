@@ -1,9 +1,10 @@
 package com.wenhao.weixin.mp.handler;
 
-import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.base.BaseResponse;
 import com.wenhao.constants.Constants;
+import com.wenhao.core.utils.RedisUtil;
 import com.wenhao.core.utils.RegexUtils;
+import com.wenhao.member.output.dto.UserOutDTO;
 import com.wenhao.weixin.feign.MemberServiceFeign;
 import com.wenhao.weixin.mp.builder.TextBuilder;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -14,11 +15,9 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static me.chanjar.weixin.common.api.WxConsts.XmlMsgType;
 
@@ -34,22 +33,11 @@ public class MsgHandler extends AbstractHandler {
     @Value("${mayikt.weixin.default.registration.code.message}")
     private String defaultRegistrationCodeMessage;
 
-    /*@Autowired
-    private RedisUtil redisUtil;*/
-
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    private RedisUtil redisUtil;
 
     @Autowired
     private MemberServiceFeign memberServiceFeign;
-
-    //设置stirng 有过期时间
-    public void setString(String key, String data, Long exTime) {
-        stringRedisTemplate.opsForValue().set(key, data);
-        if (exTime != null) {
-            stringRedisTemplate.expire(key, exTime, TimeUnit.SECONDS);
-        }
-    }
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -92,7 +80,7 @@ public class MsgHandler extends AbstractHandler {
             //替换成验证码
             String content = registrationCodeMessage.format(registrationCodeMessage, registCode);
             //redisUtil.delete("");
-            setString(Constants.WEIXINCODE_KEY + fromContent, registCode + "", Constants.WEIXINCODE_TIMEOUT);
+            redisUtil.setString(Constants.WEIXINCODE_KEY + fromContent, registCode + "", Constants.WEIXINCODE_TIMEOUT);
             //返回code
             return new TextBuilder().build(content, wxMessage, weixinService);
         }

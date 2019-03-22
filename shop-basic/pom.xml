@@ -17,5 +17,12 @@
         <module>shop-basic-zuul</module>
     </modules>
 
+    <dependencies>
+        <!--SpringCloud eureka-server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

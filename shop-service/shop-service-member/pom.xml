@@ -11,23 +11,4 @@
 
     <artifactId>shop-service-member</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.wenhao.shop</groupId>
-            <artifactId>shop-weixin-dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.wenhao.shop</groupId>
-            <artifactId>shop-member-dto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.spring4all</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.8.0.RELEASE</version>
-        </dependency>
-    </dependencies>
-
 </project>

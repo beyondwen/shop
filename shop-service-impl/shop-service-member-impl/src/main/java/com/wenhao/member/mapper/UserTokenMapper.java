@@ -19,7 +19,7 @@ public interface UserTokenMapper {
      */
     @Select("SELECT ID id,TOKEN token, LOGIN_TYPE loginType,DEVICE_INFO deviceInfo,IS_AVAILABLE isAvaliable," +
             "USER_ID userId,CREATE_TIME createTime, UPDATE_TIME updateTime FROM meite_user_token WHERE " +
-            "USER_ID = #{0} AND LOGIN_TYPE =#{1} AND IS_AVAILABLE = '0';")
+            "USER_ID = #{userId} AND LOGIN_TYPE =#{loginType} AND IS_AVAILABLE = '0';")
     UserTokenDo selectByUserIdAndLoginType(@Param("userId") Long userId, @Param("loginType") String loginType);
 
     /**
