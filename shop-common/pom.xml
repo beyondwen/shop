@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>shop-common-core</module>
+        <module>shop-web-core</module>
     </modules>
 
     <dependencies>
