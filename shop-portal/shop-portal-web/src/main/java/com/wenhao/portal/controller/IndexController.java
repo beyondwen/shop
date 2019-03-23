@@ -1,4 +1,4 @@
-package com.wenhao.member;
+package com.wenhao.portal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
