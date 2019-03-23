@@ -50,7 +50,7 @@
 			</button>
 		</div>
 	</div>
-	<form action="register.html" method="post">
+	<form action="register" method="post">
 		<div class="layui-fulid" id="house-login">
 			<div class="layui-form">
 				<p>手机号登录</p>

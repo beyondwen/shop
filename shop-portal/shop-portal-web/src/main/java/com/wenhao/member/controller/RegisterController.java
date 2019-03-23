@@ -37,7 +37,7 @@ public class RegisterController extends BaseWebController {
      *
      * @return
      */
-    @GetMapping("/register.html")
+    @GetMapping("/register")
     public String getRegister() {
         return MEMBER_REGISTER_PAGE;
     }
@@ -47,7 +47,7 @@ public class RegisterController extends BaseWebController {
      *
      * @return
      */
-    @PostMapping("/register.html")
+    @PostMapping("/register")
     public String postRegister(@ModelAttribute(value = "registerVo") RegisterVo registerVo,
                                BindingResult bindingResult, Model model, HttpSession httpSession) {
         if (bindingResult.hasErrors()) {

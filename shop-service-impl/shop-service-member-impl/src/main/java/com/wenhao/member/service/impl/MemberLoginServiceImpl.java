@@ -44,7 +44,7 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
         if (StringUtils.isEmpty(password)) {
             return setResultError("密码不能为空");
         }
-        String logintype = userLoginInpDto.getLogintype();
+        String logintype = userLoginInpDto.getLoginType();
         if (StringUtils.isEmpty(logintype)) {
             return setResultError("登录类型不能为空");
         }

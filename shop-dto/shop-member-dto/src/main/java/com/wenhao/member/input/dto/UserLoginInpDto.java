@@ -17,7 +17,7 @@ public class UserLoginInpDto {
     @ApiModelProperty(value = "密码")
     private String password;
     @ApiModelProperty(value = "登录类型")
-    private String logintype;
+    private String loginType;
     @ApiModelProperty(value = "设备信息")
     private String deviceInfo;
 

@@ -17,6 +17,11 @@
             <artifactId>shop-common-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--获取浏览器信息-->
+        <dependency>
+            <groupId>nl.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
