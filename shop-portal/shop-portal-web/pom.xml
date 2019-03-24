@@ -38,6 +38,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.tengxun</groupId>
+            <artifactId>sdk4j</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

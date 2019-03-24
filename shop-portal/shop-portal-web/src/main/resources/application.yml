@@ -12,7 +12,7 @@ spring:
   application:
     name: app-mayikt-portal-web
 server:
-  port: 1234
+  port: 80
 
 eureka:
   client:
