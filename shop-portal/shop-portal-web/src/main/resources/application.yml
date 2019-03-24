@@ -11,11 +11,15 @@ spring:
     template-loader-path: classpath:/templates
   application:
     name: app-mayikt-portal-web
+  redis:
+    host: 192.168.2.146
+    port: 6379
 server:
-  port: 80
+  port: 8080
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://192.168.2.146:8080/eureka
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://192.168.2.146:8080/eureka
 
