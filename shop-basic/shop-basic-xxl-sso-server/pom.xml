@@ -53,6 +53,16 @@
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-sso-core</artifactId>
         </dependency>
+        <!-- 阿波罗整合spring boot -->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
