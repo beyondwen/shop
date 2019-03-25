@@ -15,6 +15,7 @@
     <modules>
         <module>shop-basic-eureka</module>
         <module>shop-basic-zuul</module>
+        <module>shop-basic-xxl-sso-server</module>
     </modules>
 
     <dependencies>
